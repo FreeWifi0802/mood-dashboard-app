@@ -23,6 +23,10 @@ function App() {
     setCounts(prev => ({ ...prev, [mood]: prev[mood] + 1 }));
   }
 
+  function resetCounts(){
+    setCounts(prev => Object.fromEntries(Object.keys(prev).map(key => [key, 0])));
+  }
+
   return (
     <div className="dashboard">
       <h1>Emoji Mood Dashboard</h1>
@@ -37,6 +41,8 @@ function App() {
             onVote={handleVote}
           />
         ))}
+
+        <button onClick = {resetCounts}>Reset</button>
       </div>
 
       {/* 4️⃣  Pass the **real variable** `counts` to MoodStats */}
